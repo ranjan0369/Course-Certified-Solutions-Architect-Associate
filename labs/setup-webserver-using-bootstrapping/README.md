@@ -19,11 +19,13 @@ Add the following script during **instance launch** under **Advanced → User Da
 
 ```bash
 #!/bin/bash
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-echo "Hello from EC2!" > /var/www/html/index.html
+#!/bin/bash
+sudo yum update -y
+sudo yum install -y httpd
+sudo yum install -y git
+cd /var/www/html
+echo "<h1>Hello from EC2 Bootstrap!</h1>" > index.html
+sudo service httpd start
 
 ```
 
@@ -31,7 +33,7 @@ This will:
 
 -   Install **Apache web server**
     
--   Start and enable it on boot
+-   Start it on boot
     
 -   Serve a simple webpage
     
